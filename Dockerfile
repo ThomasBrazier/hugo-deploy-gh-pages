@@ -19,6 +19,13 @@ RUN apt-get update && \
 	git && \
 	rm -rf /var/lib/apt/lists/*
 
+RUN wget https://go.dev/dl/go1.19.3.linux-amd64.tar.gz 77 \
+        sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.19.3.linux-amd64.tar.gz 77 \
+        export PATH=$PATH:/usr/local/go/bin && \
+        sudo snap install --classic node && \
+        wget https://github.com/gohugoio/hugo/releases/download/v0.105.0/hugo_extended_0.105.0_linux-amd64.deb && \
+        sudo dpkg -i hugo_extended_0.105.0_linux-amd64.deb
+
 ##
 # Copy over the action script.
 ##
